@@ -1,10 +1,20 @@
-import React, { Component } from "react";
-import s from "./style.css";
+import React from "react";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
+import Router from "./route";
 
-class MyComponent extends Component {
-  render() {
-    return <div className={s.intro}>Hello World</div>;
-  }
+const client = new ApolloClient({
+  uri: "https://graphql-pokemon.now.sh/",
+  cache: new InMemoryCache()
+});
+
+function App() {
+  return (
+    <ApolloProvider client={client}>
+      <Router />
+    </ApolloProvider>
+  );
 }
 
-export default MyComponent;
+export default App;
