@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.js",
   mode: "development",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "public"),
     filename: "./main.js",
     publicPath: "/"
   },
@@ -37,7 +37,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "public"),
     compress: true,
     port: 9000,
     watchContentBase: true,
@@ -46,7 +46,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "dist/index.html"
+      template: "public/index.html"
     })
   ]
 };
