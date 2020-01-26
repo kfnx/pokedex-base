@@ -5,11 +5,12 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { createGlobalStyle } from "styled-components";
 import Router from "./route";
 import globalStyle from "./index.css";
+import { GRAPHQL_HOST } from "./constants/uri";
 
 const GlobalStyle = createGlobalStyle`${globalStyle}`;
 
 const client = new ApolloClient({
-  uri: "https://graphql-pokemon.now.sh/",
+  uri: GRAPHQL_HOST,
   cache: new InMemoryCache()
 });
 

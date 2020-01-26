@@ -10,7 +10,7 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Layout>
-        <React.Suspense fallback={<PokeBallSpinner display />}>
+        <React.Suspense fallback={<PokeBallSpinner display fallback />}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/filter/:filter" component={Home} />

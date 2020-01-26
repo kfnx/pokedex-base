@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import PokeBallSpinner from "../../component/PokeBallSpinner";
 import { GET_POKEMONS } from "../../query";
+import { PINK_BASE } from "../../constants/colors";
 
 export default function Home() {
   const size = window && window.innerWidth < 960 ? "small" : "large";
@@ -65,6 +66,7 @@ export default function Home() {
 }
 
 const CardListContainer = styled.div`
+  min-height: 250px;
   max-width: 930px;
   justify-content: space-around;
   margin: auto;
@@ -89,7 +91,7 @@ const Card = styled(Link)`
   transition: all 0.2s ease-in-out;
   &:hover {
     transform: rotate(1deg);
-    border: 2px solid #fa6f61;
+    border: 2px solid ${PINK_BASE};
   }
 `;
 

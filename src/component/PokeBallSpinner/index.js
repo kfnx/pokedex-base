@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import { POKEBALL_IMAGE } from "../../constants/uri";
 
 const rotate = keyframes`
   from {
@@ -25,15 +26,18 @@ const Image = styled.img`
   transition: all 0.35s ease-in-out;
   animation: ${rotate} 1s linear infinite;
   opacity: 0.6;
+  ${props =>
+    props.fallback &&
+    `
+    margin-top: 250px;
+  `}
 `;
 
 export default function(props) {
-  const { display } = props;
+  const { display, fallback } = props;
   return (
     <Container>
-      {display && (
-        <Image src="https://pokedex.sokcoba.in/dist/assets/icon.svg" />
-      )}
+      {display && <Image fallback={fallback} src={POKEBALL_IMAGE} />}
     </Container>
   );
 }

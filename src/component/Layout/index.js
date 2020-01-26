@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import SelectFilter from "../SelectFilter";
+import { PINK_BASE } from "../../constants/colors";
 
 const Container = styled.div`
   width: 100vw;
@@ -49,7 +50,7 @@ const HeaderButton = styled.div`
 const Title = styled(Link)`
   font-size: 1.3em;
   font-weight: bold;
-  color: #fa6f61;
+  color: ${PINK_BASE};
   text-decoration: none;
 `;
 
