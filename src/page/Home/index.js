@@ -59,7 +59,7 @@ export default function Home() {
         </center>
       )}
       <ListPokemons pokemons={pokemonFetched} filter={filter} size={size} />
-      {<PokeBallSpinner display={loading && !limitExceed} />}
+      {<PokeBallSpinner display={!limitExceed} />}
     </>
   );
 }
@@ -82,10 +82,15 @@ const Card = styled(Link)`
   width: ${props => (props.size === "small" ? "80%" : "230px")};
   padding: 16px;
   margin: 16px;
-  border: 2px solid seagreen;
+  border: 2px solid gainsboro;
   border-radius: 8px;
   color: black;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    transform: rotate(1deg);
+    border: 2px solid #fa6f61;
+  }
 `;
 
 const Name = styled.p`

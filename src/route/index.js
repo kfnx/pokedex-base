@@ -10,29 +10,25 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Layout>
-        <React.Suspense
-          fallback={
-            // <center>
-            //   <h1>LOADING</h1>
-            // </center>
-            <PokeBallSpinner />
-          }
-        >
+        <React.Suspense fallback={<PokeBallSpinner display />}>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/filter/:filter" component={Home} />
             <Route path="/detail/:name" component={Detail} />
-            <Route path="/pokeball" component={() => <PokeBallSpinner />} />
-            <Route
-              component={() => (
-                <center>
-                  <h1>page not found</h1>
-                </center>
-              )}
-            />
+            <Route component={() => <NotFound />} />
           </Switch>
         </React.Suspense>
       </Layout>
     </BrowserRouter>
+  );
+}
+
+function NotFound() {
+  return (
+    <center>
+      <br />
+      <br />
+      <h1>page not found</h1>
+    </center>
   );
 }

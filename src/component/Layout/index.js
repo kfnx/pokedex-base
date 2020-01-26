@@ -16,7 +16,6 @@ function Layout(props) {
   const [displayFilterSelection, setDisplayFilterSelection] = React.useState(
     false
   );
-  console.log("displayFilterSelection", displayFilterSelection);
   return (
     <Container>
       <Header
@@ -47,10 +46,11 @@ const HeaderButton = styled.div`
   width: 60px;
 `;
 
-const Title = styled.span`
+const Title = styled(Link)`
   font-size: 1.3em;
   font-weight: bold;
   color: #fa6f61;
+  text-decoration: none;
 `;
 
 const BrandIcon = styled.img`
@@ -66,7 +66,11 @@ function Header(props) {
   return (
     <HeaderContainer>
       <HeaderButton>
-        {showBackButton ? <Link to="/">Back</Link> : <Title>Pokédex</Title>}
+        {showBackButton ? (
+          <Link to="/">Back</Link>
+        ) : (
+          <Title to="/">Pokédex</Title>
+        )}
       </HeaderButton>
       <BrandIcon src="https://cdn6.aptoide.com/imgs/c/0/e/c0e7d9bd31301617394b4e023a66776e_icon.png" />
       <HeaderButton>
