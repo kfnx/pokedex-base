@@ -76,7 +76,7 @@ const FilterButton = styled(Link)`
   color: ${DARK_SLATE_GRAY};
   border: 2px solid ${DARK_SLATE_GRAY};
   cursor: pointer;
-  transition: all 0.25 ease-in-out;
+  transition: all 0.35 ease-in-out;
   &:hover {
     background-color: ${DARK_SLATE_GRAY};
     color: ${PINK_BASE};
@@ -104,7 +104,7 @@ export default function(props) {
       onClose();
       setTimeout(function() {
         location.replace(filterUrl);
-      }, 200);
+      }, 350);
     }
   };
 

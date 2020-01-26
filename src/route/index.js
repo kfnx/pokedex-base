@@ -14,8 +14,8 @@ export default function Router() {
         <React.Suspense fallback={<PokeBallSpinner display fallback />}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/filter/:filter" component={Home} />
-            <Route path="/detail/:name" component={Detail} />
+            <Route exact path="/filter/:filter" component={Home} />
+            <Route exact path="/detail/:name" component={Detail} />
             <Route component={NotFound} />
           </Switch>
         </React.Suspense>
