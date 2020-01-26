@@ -4,17 +4,29 @@ import Layout from "../component/Layout";
 
 const Home = React.lazy(() => import("../page/Home"));
 const Detail = React.lazy(() => import("../page/Detail"));
-const MyPokemon = React.lazy(() => import("../page/MyPokemon"));
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Layout>
-        <React.Suspense fallback={<p>fallback!</p>}>
+        <React.Suspense
+          fallback={
+            <center>
+              <h1>LOADING</h1>
+            </center>
+          }
+        >
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/detail/:id/:name" component={Detail} />
-            <Route path="/my-pokemon" component={MyPokemon} />
+            <Route path="/filter/:filter" component={Home} />
+            <Route path="/detail/:name" component={Detail} />
+            <Route
+              component={() => (
+                <center>
+                  <h1>page not found</h1>
+                </center>
+              )}
+            />
           </Switch>
         </React.Suspense>
       </Layout>

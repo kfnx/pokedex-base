@@ -9,15 +9,13 @@ const GET_POKEMONS = gql`
       types
       number
       classification
-      weaknesses
-      resistant
     }
   }
 `;
 
 const GET_POKEMON_DETAIL = gql`
-  query getPokemon($id: String, $name: String) {
-    pokemon(id: $id, name: $name) {
+  query getPokemon($name: String) {
+    pokemon(name: $name) {
       id
       name
       image
