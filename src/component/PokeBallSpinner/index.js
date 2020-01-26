@@ -29,7 +29,7 @@ const Image = styled.img`
   ${props =>
     props.fallback &&
     `
-    margin-top: 250px;
+    margin-top: 200px;
   `}
 `;
 

@@ -7,9 +7,15 @@ import PokeBallSpinner from "../../component/PokeBallSpinner";
 import { GET_POKEMONS } from "../../query";
 import { PINK_BASE } from "../../constants/colors";
 
+const Filters = styled.p`
+  margin: 16px auto 8px auto;
+  text-align: center;
+`;
+
 export default function Home() {
   const size = window && window.innerWidth < 960 ? "small" : "large";
   const { filter } = useParams();
+
   const totalFetchItem = {
     onStart: filter ? 60 : 21,
     onMore: filter ? 30 : 12
@@ -51,22 +57,22 @@ export default function Home() {
 
   const pokemonFetched = data ? data.pokemons : [];
   const limitExceed = pokemonFetched.length > 150;
-
+  const filterArray = filter ? filter.split("&") : [];
   return (
     <>
-      {filter && (
-        <center>
-          <p>filter: {filter}</p>
-        </center>
-      )}
-      <ListPokemons pokemons={pokemonFetched} filter={filter} size={size} />
+      {filter && <Filters>filter : {filterArray.join(", ")}</Filters>}
+      <ListPokemons
+        pokemons={pokemonFetched}
+        filter={filterArray}
+        size={size}
+      />
       {<PokeBallSpinner display={!limitExceed} />}
     </>
   );
 }
 
 const CardListContainer = styled.div`
-  min-height: 250px;
+  min-height: 200px;
   max-width: 930px;
   justify-content: space-around;
   margin: auto;
@@ -122,8 +128,21 @@ const ListPokemons = function({ pokemons, filter, size }) {
   return (
     <CardListContainer>
       {pokemons.map(pokemon => {
-        if (filter && !pokemon.types.includes(filter)) {
-          return null;
+        if (filter.length > 0) {
+          if (filter.some(item => pokemon.types.includes(item))) {
+            return (
+              <Card key={pokemon.id} to={`detail/${pokemon.name}`} size={size}>
+                <ImageContainer>
+                  <img src={pokemon.image} width="100%" />
+                </ImageContainer>
+                <Description>
+                  <Name>{pokemon.name}</Name>
+                  <Classification>{pokemon.classification}</Classification>
+                  <p>{pokemon.types.join(", ")}</p>
+                </Description>
+              </Card>
+            );
+          }
         } else {
           return (
             <Card key={pokemon.id} to={`detail/${pokemon.name}`} size={size}>

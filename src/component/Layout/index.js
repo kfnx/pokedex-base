@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useParams } from "react-router-dom";
 import styled from "styled-components";
 import SelectFilter from "../SelectFilter";
 import { PINK_BASE } from "../../constants/colors";
@@ -17,6 +17,7 @@ function Layout(props) {
   const [displayFilterSelection, setDisplayFilterSelection] = React.useState(
     false
   );
+
   return (
     <Container>
       <Header
@@ -58,6 +59,14 @@ const BrandIcon = styled.img`
   height: 32px;
 `;
 
+const FilterButton = styled.div`
+  color: ${PINK_BASE};
+  cursor: pointer;
+  &:hover {
+    opacity: 0.75;
+  }
+`;
+
 function Header(props) {
   const { location, showFilterSelection } = props;
   const showFilterButton =
@@ -76,7 +85,7 @@ function Header(props) {
       <BrandIcon src="https://cdn6.aptoide.com/imgs/c/0/e/c0e7d9bd31301617394b4e023a66776e_icon.png" />
       <HeaderButton>
         {showFilterButton && (
-          <button onClick={showFilterSelection}>FILTER</button>
+          <FilterButton onClick={showFilterSelection}>FILTER</FilterButton>
         )}
       </HeaderButton>
     </HeaderContainer>
