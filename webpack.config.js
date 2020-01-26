@@ -37,7 +37,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 9000,
     watchContentBase: true,
@@ -46,7 +46,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "public/index.html"
+      template: "dist/index.html"
     })
   ]
 };
