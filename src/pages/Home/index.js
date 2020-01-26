@@ -3,8 +3,8 @@ import { useQuery } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import PokeBallSpinner from "../../component/PokeBallSpinner";
-import ErrorMessage from "../../component/ErrorMessage";
+import PokeBallSpinner from "../../components/PokeBallSpinner";
+import ErrorMessage from "../../components/ErrorMessage";
 import { GET_POKEMONS } from "../../query";
 import { PINK_BASE } from "../../constants/colors";
 

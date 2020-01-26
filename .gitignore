@@ -1,2 +1,5 @@
 node_modules
-!*/public/package.json
+!public/package.json
+!public/*
+public/*
+.DS_Store

@@ -2,8 +2,8 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import styled from "styled-components";
-import ErrorMessage from "../../component/ErrorMessage";
-import PokeBallSpinner from "../../component/PokeBallSpinner";
+import ErrorMessage from "../../components/ErrorMessage";
+import PokeBallSpinner from "../../components/PokeBallSpinner";
 import { GET_POKEMON_DETAIL } from "../../query";
 
 const Container = styled.div`
