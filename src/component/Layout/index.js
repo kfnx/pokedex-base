@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import SelectFilter from "../SelectFilter";
 
 const Container = styled.div`
   width: 100vw;
@@ -10,11 +11,23 @@ const Content = styled.div`
   padding: 8px 16px;
 `;
 
-function Layout({ children, location }) {
+function Layout(props) {
+  const { children, location } = props;
+  const [displayFilterSelection, setDisplayFilterSelection] = React.useState(
+    false
+  );
+  console.log("displayFilterSelection", displayFilterSelection);
   return (
     <Container>
-      <Header location={location} />
+      <Header
+        location={location}
+        showFilterSelection={() => setDisplayFilterSelection(true)}
+      />
       <Content>{children}</Content>
+      <SelectFilter
+        display={displayFilterSelection}
+        onClose={() => setDisplayFilterSelection(false)}
+      />
     </Container>
   );
 }
@@ -30,14 +43,37 @@ const HeaderContainer = styled.div`
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
 `;
 
-function Header({ location }) {
-  const locationIsHome = location.pathname === "/";
-  const locationIsDetail = location.pathname.includes("/detail/");
+const HeaderButton = styled.div`
+  width: 60px;
+`;
+
+const Title = styled.span`
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #fa6f61;
+`;
+
+const BrandIcon = styled.img`
+  height: 32px;
+`;
+
+function Header(props) {
+  const { location, showFilterSelection } = props;
+  const showFilterButton =
+    !location.pathname.includes("/detail/") ||
+    location.pathname.includes("/filter/");
+  const showBackButton = location.pathname.includes("/detail/");
   return (
     <HeaderContainer>
-      {locationIsDetail ? <Link to="/">Back</Link> : "Pokédex"}
-      <Link to="/">Home</Link>
-      {locationIsHome && <button>FILTER</button>}
+      <HeaderButton>
+        {showBackButton ? <Link to="/">Back</Link> : <Title>Pokédex</Title>}
+      </HeaderButton>
+      <BrandIcon src="https://cdn6.aptoide.com/imgs/c/0/e/c0e7d9bd31301617394b4e023a66776e_icon.png" />
+      <HeaderButton>
+        {showFilterButton && (
+          <button onClick={showFilterSelection}>FILTER</button>
+        )}
+      </HeaderButton>
     </HeaderContainer>
   );
 }

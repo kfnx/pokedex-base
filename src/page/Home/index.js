@@ -3,12 +3,19 @@ import { useQuery } from "@apollo/react-hooks";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import PokeBallSpinner from "../../component/PokeBallSpinner";
 import { GET_POKEMONS } from "../../query";
 
 export default function Home() {
   const size = window && window.innerWidth < 960 ? "small" : "large";
   const { filter } = useParams();
-  const [variables, setVariables] = React.useState({ first: 21 });
+  const totalFetchItem = {
+    onStart: filter ? 60 : 21,
+    onMore: filter ? 30 : 12
+  };
+  const [variables, setVariables] = React.useState({
+    first: totalFetchItem.onStart
+  });
   const { loading, error, data, fetchMore } = useQuery(GET_POKEMONS, {
     variables
   });
@@ -22,7 +29,7 @@ export default function Home() {
     fetchMore({
       variables: {
         ...variables,
-        first: filter ? variables.first + 27 : variables.first + 12
+        first: variables.first + totalFetchItem.onMore
       },
       updateQuery: (prev, { fetchMoreResult, variables }) => {
         setVariables(variables);
@@ -42,19 +49,17 @@ export default function Home() {
   if (error) return <p>SOMETHING HAPPEN, ERROR</p>;
 
   const pokemonFetched = data ? data.pokemons : [];
+  const limitExceed = pokemonFetched.length > 150;
 
   return (
     <>
-      <ListPokemons pokemons={pokemonFetched} filter={filter} size={size} />
-      {loading ? (
+      {filter && (
         <center>
-          <h1>LOADING</h1>
-        </center>
-      ) : (
-        <center>
-          <h1> </h1>
+          <p>filter: {filter}</p>
         </center>
       )}
+      <ListPokemons pokemons={pokemonFetched} filter={filter} size={size} />
+      {<PokeBallSpinner display={loading && !limitExceed} />}
     </>
   );
 }
@@ -107,16 +112,12 @@ const Description = styled.div`
 `;
 
 const ListPokemons = function({ pokemons, filter, size }) {
-  console.log(pokemons.length);
-  console.log(`filter ${filter}`);
   return (
     <CardListContainer>
       {pokemons.map(pokemon => {
         if (filter && !pokemon.types.includes(filter)) {
-          console.log(`skip ${pokemon.name}`);
           return null;
         } else {
-          console.log(`ok ${pokemon.name}`);
           return (
             <Card key={pokemon.id} to={`detail/${pokemon.name}`} size={size}>
               <ImageContainer>
