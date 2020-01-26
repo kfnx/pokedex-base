@@ -1,6 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Layout from "../component/Layout";
+import NotFound from "../component/NotFound";
 import PokeBallSpinner from "../component/PokeBallSpinner";
 
 const Home = React.lazy(() => import("../page/Home"));
@@ -15,20 +16,10 @@ export default function Router() {
             <Route exact path="/" component={Home} />
             <Route path="/filter/:filter" component={Home} />
             <Route path="/detail/:name" component={Detail} />
-            <Route component={() => <NotFound />} />
+            <Route component={NotFound} />
           </Switch>
         </React.Suspense>
       </Layout>
     </BrowserRouter>
-  );
-}
-
-function NotFound() {
-  return (
-    <center>
-      <br />
-      <br />
-      <h1>page not found</h1>
-    </center>
   );
 }

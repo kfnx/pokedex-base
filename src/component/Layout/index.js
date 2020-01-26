@@ -45,10 +45,12 @@ const HeaderContainer = styled.div`
 `;
 
 const HeaderButton = styled.div`
-  width: 60px;
+  width: 96px;
 `;
 
 const Title = styled(Link)`
+  line-height: 35px;
+  margin: 0px;
   font-size: 1.3em;
   font-weight: bold;
   color: ${PINK_BASE};
@@ -67,6 +69,10 @@ const FilterButton = styled.div`
   }
 `;
 
+const BackIcon = styled.span`
+  font-size: 1.4em;
+`;
+
 function Header(props) {
   const { location, showFilterSelection } = props;
   const showFilterButton =
@@ -77,7 +83,9 @@ function Header(props) {
     <HeaderContainer>
       <HeaderButton>
         {showBackButton ? (
-          <Link to="/">Back</Link>
+          <Title to="/">
+            <BackIcon>&#8249;</BackIcon> Back
+          </Title>
         ) : (
           <Title to="/">Pokédex</Title>
         )}

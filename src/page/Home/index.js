@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import PokeBallSpinner from "../../component/PokeBallSpinner";
+import ErrorMessage from "../../component/ErrorMessage";
 import { GET_POKEMONS } from "../../query";
 import { PINK_BASE } from "../../constants/colors";
 
@@ -53,7 +54,7 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  if (error) return <p>SOMETHING HAPPEN, ERROR</p>;
+  if (error) return <ErrorMessage />;
 
   const pokemonFetched = data ? data.pokemons : [];
   const limitExceed = pokemonFetched.length > 150;
