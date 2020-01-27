@@ -1,4 +1,4 @@
-Another pokedex app. [WIP]
+Another pokedex app.
 
 Technology used : 
 - React ⚛️
@@ -9,15 +9,14 @@ Technology used :
 To do:
 - [x] Configure Webpack and App Architecture
 - [x] Infinite Scroll list of pokemon
-- [ ] Pokemon details page
+- [x] Pokemon details page
 - [x] Filter pokemon by types
-- [ ] Responsive Web Pages
+- [x] Adaptive Web Design
 - [x] Deploy to Zeit
 
 Nice To Have:
 - [x] Multiple filter item
 - [ ] Handle when no pokemon shown on first fetching with filter on rare types
-- [ ] Persist selected filter item
 - [ ] Colorize pokemon types (like Badge)
 
 ## Live Demo
@@ -36,7 +35,7 @@ Install dependency
 ### `npm start` or `yarn start`
 
 Runs the app in the development mode.
-Open [http://localhost:9000](http://localhost:9000) to view it in the browser.
+Open [http://localhost:9000](http://localhost:9000) in browser to view the project.
 
 ### `npm build` or `yarn build`
 
