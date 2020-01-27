@@ -3,10 +3,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ["./src/index.js"],
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist")
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "public"),
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -36,23 +37,15 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    port: 9000
+    port: 9000,
+    publicPath: "/",
+    contentBase: path.join(__dirname, "public")
   },
-  // devServer: {
-  //   contentBase: path.join(__dirname, "dist"),
-  //   compress: true,
-  //   port: 9000,
-  //   watchContentBase: true,
-  //   progress: true,
-  //   historyApiFallback: true,
-  //   publicPath: "/"
-  // },
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: "Pokédex",
-      inject: true,
-      template: "./public/index.html"
+      template: "./src/index.html"
     })
   ]
 };

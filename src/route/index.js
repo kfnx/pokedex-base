@@ -1,11 +1,10 @@
 import * as React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "../pages/Home";
+import Detail from "../pages/Detail";
 import Layout from "../components/Layout";
 import NotFound from "../components/NotFound";
 import PokeBallSpinner from "../components/PokeBallSpinner";
-
-const Home = React.lazy(() => import("../pages/Home"));
-const Detail = React.lazy(() => import("../pages/Detail"));
 
 export default function Router() {
   return (
