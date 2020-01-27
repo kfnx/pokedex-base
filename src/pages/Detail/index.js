@@ -51,7 +51,7 @@ export default function Detail() {
 }
 
 function Evolution(props) {
-  if (props.evolutions) {
+  if (Array.isArray(props.evolutions)) {
     return (
       <>
         <h2>EVOLUTION</h2>
@@ -64,6 +64,6 @@ function Evolution(props) {
       </>
     );
   } else {
-    <h1>no evolution data recorded</h1>;
+    return <h1>no evolution data recorded</h1>;
   }
 }
