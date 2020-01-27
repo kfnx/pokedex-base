@@ -143,12 +143,12 @@ const EvoPokemonImage = styled.div`
       ? `
         width: 64px;
         height: 64px;
-        margin: auto 8px;
+        margin: 8px;
       `
       : `
         width: 128px;
         height: 128px;
-        margin: auto 16px;
+        margin: 16px;
   `};
   padding: 4px;
 `;
