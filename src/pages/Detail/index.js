@@ -39,7 +39,7 @@ const PokemonImage = styled.div`
   align-items: center;
   justify-content: center;
   padding: 16px;
-  margin: 8px auto 8px 0px;
+  margin: 16px auto 8px 0px;
   width: ${props => (props.size === "small" ? "100%" : "44%")};
 `;
 
@@ -47,7 +47,7 @@ const Statistic = styled.div`
   border: 2px solid gainsboro;
   border-radius: 8px;
   padding: 16px;
-  margin: 8px 0px 8px auto;
+  margin: 16px 0px 8px auto;
   width: ${props => (props.size === "small" ? "100%" : "44%")};
 `;
 
@@ -75,7 +75,6 @@ export default function Detail() {
 
   if (error) return <ErrorMessage />;
 
-  console.log(data);
   if (data && data.pokemon) {
     const {
       name,
@@ -134,7 +133,7 @@ const EvolutionCard = styled.div`
   border: 2px solid gainsboro;
   border-radius: 8px;
   padding: 16px;
-  margin: 8px auto;
+  margin: 16px auto;
   width: 100%;
 `;
 

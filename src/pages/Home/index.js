@@ -9,8 +9,9 @@ import { GET_POKEMONS } from "../../query";
 import { PINK_BASE } from "../../constants/colors";
 
 const Filters = styled.p`
-  margin: 16px auto 8px auto;
+  margin: 8px auto;
   text-align: center;
+  line-height: 1.5em;
 `;
 
 export default function Home() {
