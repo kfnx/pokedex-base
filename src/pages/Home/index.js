@@ -131,7 +131,7 @@ const ListPokemons = function({ pokemons, filter, size }) {
         if (filter.length > 0) {
           if (filter.some(item => pokemon.types.includes(item))) {
             return (
-              <Card key={pokemon.id} to={`detail/${pokemon.name}`} size={size}>
+              <Card key={pokemon.id} to={`/detail/${pokemon.name}`} size={size}>
                 <ImageContainer>
                   <img src={pokemon.image} width="100%" />
                 </ImageContainer>
@@ -145,7 +145,7 @@ const ListPokemons = function({ pokemons, filter, size }) {
           }
         } else {
           return (
-            <Card key={pokemon.id} to={`detail/${pokemon.name}`} size={size}>
+            <Card key={pokemon.id} to={`/detail/${pokemon.name}`} size={size}>
               <ImageContainer>
                 <img src={pokemon.image} width="100%" />
               </ImageContainer>
