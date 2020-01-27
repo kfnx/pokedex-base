@@ -58,6 +58,10 @@ const Title = styled.p`
   text-align: left;
 `;
 
+const Text = styled.p`
+  line-height: 1.4em;
+`;
+
 export default function Detail() {
   const size = window && window.innerWidth < 960 ? "small" : "large";
   const { name } = useParams();
@@ -95,25 +99,25 @@ export default function Detail() {
           </PokemonImage>
           <Statistic size={size}>
             <Title>Weight</Title>
-            <p>{`${weight.minimum} - ${weight.maximum}`}</p>
+            <Text>{`${weight.minimum} - ${weight.maximum}`}</Text>
             <Title>Height</Title>
-            <p>{`${height.minimum} - ${height.maximum}`}</p>
+            <Text>{`${height.minimum} - ${height.maximum}`}</Text>
             <Title>Types</Title>
-            <p>{types.join(", ")}</p>
+            <Text>{types.join(", ")}</Text>
             <Title>Fast attacks</Title>
-            <p>
+            <Text>
               {attacks &&
                 attacks.fast.map(i => `${i.name} (${i.type})`).join(", ")}
-            </p>
+            </Text>
             <Title>Special attacks</Title>
-            <p>
+            <Text>
               {attacks &&
                 attacks.special.map(i => `${i.name} (${i.type})`).join(", ")}
-            </p>
+            </Text>
             <Title>Resistant</Title>
-            <p>{resistant.join(", ")}</p>
+            <Text>{resistant.join(", ")}</Text>
             <Title>Weaknesses</Title>
-            <p>{weaknesses.join(", ")}</p>
+            <Text>{weaknesses.join(", ")}</Text>
           </Statistic>
           {Array.isArray(evolutions) && (
             <Evolution evolutions={evolutions} size={size} />
@@ -148,7 +152,7 @@ const EvoPokemonImage = styled.div`
       : `
         width: 128px;
         height: 128px;
-        margin: 16px;
+        margin: 8px 16px;
   `};
   padding: 4px;
 `;
