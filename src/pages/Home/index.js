@@ -31,8 +31,7 @@ export default function Home() {
   const handleScroll = React.useCallback(() => {
     const scrollTop = document.documentElement.scrollTop;
     const offsetHeight = document.documentElement.offsetHeight;
-
-    if (window.innerHeight + scrollTop + 2 < offsetHeight) return;
+    if (window.innerHeight + scrollTop < offsetHeight - 100) return;
 
     fetchMore({
       variables: {

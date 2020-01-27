@@ -102,9 +102,6 @@ export default function(props) {
       window.alert("please select pokemon types to filter");
     } else {
       onClose();
-      setTimeout(function() {
-        location.replace(filterUrl);
-      }, 350);
     }
   };
 

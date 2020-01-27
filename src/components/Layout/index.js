@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, withRouter, useParams } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 import SelectFilter from "../SelectFilter";
 import { PINK_BASE } from "../../constants/colors";
@@ -24,7 +24,11 @@ function Layout(props) {
         location={location}
         showFilterSelection={() => setDisplayFilterSelection(true)}
       />
-      <Content>{children}</Content>
+      <Content>
+        {React.cloneElement(children, {
+          token: location.key // trigger re-render
+        })}
+      </Content>
       <SelectFilter
         display={displayFilterSelection}
         onClose={() => setDisplayFilterSelection(false)}
