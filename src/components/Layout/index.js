@@ -13,7 +13,8 @@ const Content = styled.div`
 `;
 
 function Layout(props) {
-  const { children, location } = props;
+  console.log(props);
+  const { children, location, history } = props;
   const [displayFilterSelection, setDisplayFilterSelection] = React.useState(
     false
   );
@@ -22,6 +23,7 @@ function Layout(props) {
     <Container>
       <Header
         location={location}
+        onBack={history.goBack}
         showFilterSelection={() => setDisplayFilterSelection(true)}
       />
       <Content>
@@ -42,14 +44,14 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 32px;
-  padding: 16px;
+  padding: 16px 24px;
   -webkit-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.1);
 `;
 
 const HeaderButton = styled.div`
-  width: 96px;
+  width: 88px;
 `;
 
 const Title = styled(Link)`
@@ -61,6 +63,14 @@ const Title = styled(Link)`
   text-decoration: none;
 `;
 
+const BackButton = styled.div`
+  height: 35px;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: ${PINK_BASE};
+  cursor: pointer;
+`;
+
 const BrandIcon = styled.img`
   height: 32px;
 `;
@@ -68,6 +78,9 @@ const BrandIcon = styled.img`
 const FilterButton = styled.div`
   color: ${PINK_BASE};
   cursor: pointer;
+  text-align: right;
+  padding-right: 8px;
+  font-size: 0.9em;
   &:hover {
     opacity: 0.75;
   }
@@ -78,7 +91,7 @@ const BackIcon = styled.span`
 `;
 
 function Header(props) {
-  const { location, showFilterSelection } = props;
+  const { location, showFilterSelection, onBack } = props;
   const showFilterButton =
     !location.pathname.includes("/detail/") ||
     location.pathname.includes("/filter/");
@@ -87,9 +100,9 @@ function Header(props) {
     <HeaderContainer>
       <HeaderButton>
         {showBackButton ? (
-          <Title to="/">
+          <BackButton onClick={onBack}>
             <BackIcon>&#8249;</BackIcon> Back
-          </Title>
+          </BackButton>
         ) : (
           <Title to="/">Pokédex</Title>
         )}

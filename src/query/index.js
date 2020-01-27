@@ -14,32 +14,38 @@ const GET_POKEMONS = gql`
 `;
 
 const GET_POKEMON_DETAIL = gql`
-  query getPokemon($name: String) {
+  query pokemonByName($name: String!) {
     pokemon(name: $name) {
       id
       name
       image
+      weight {
+        minimum
+        maximum
+      }
+      height {
+        minimum
+        maximum
+      }
       classification
-      resistant
-      weaknesses
       types
-      maxHP
-      maxCP
-      fleeRate
+      resistant
+      attacks {
+        fast {
+          name
+          type
+        }
+        special {
+          name
+          type
+        }
+      }
+      weaknesses
       evolutions {
         id
         name
         image
-        number
-        types
-        maxHP
-        maxCP
-        evolutionRequirements {
-          name
-          amount
-        }
       }
-      number
     }
   }
 `;

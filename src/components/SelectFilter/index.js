@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  top: ${props => (props.display === "true" ? "0px" : "-1500px")};
+  top: ${props => (props.display === "true" ? "0px" : "-2500px")};
   left: 0px;
   z-index: 999;
   height: 100%;
