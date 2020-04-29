@@ -13,7 +13,6 @@ const Content = styled.div`
 `;
 
 function Layout(props) {
-  console.log(props);
   const { children, location, history } = props;
   const [displayFilterSelection, setDisplayFilterSelection] = React.useState(
     false
@@ -28,7 +27,7 @@ function Layout(props) {
       />
       <Content>
         {React.cloneElement(children, {
-          token: location.key // trigger re-render
+          token: location.key, // trigger re-render
         })}
       </Content>
       <SelectFilter
